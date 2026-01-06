@@ -7,6 +7,7 @@ DairyCalendar — fullstack веб-приложение для управлен�
 привязанных к конкретным датам.
 
 Деплой веб-приложения: https://dairycalendar.netlify.app/
+
 Backend: https://github.com/velniok/DairyCalendar-backend
 
 ---
