@@ -1,54 +1,58 @@
-# React + TypeScript + Vite
+# DairyCalendar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+DairyCalendar — fullstack веб-приложение для управления задачами в формате календаря.
+Проект находится в активной разработке и постепенно обрастает новым функционалом.
 
-Currently, two official plugins are available:
+Основная идея — дать пользователю удобный интерфейс для планирования и отслеживания задач,
+привязанных к конкретным датам.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Функциональность
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+На текущий момент реализовано:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Регистрация и авторизация пользователей
+- Аутентификация с использованием JWT
+- Календарь с навигацией по месяцам (предыдущий / следующий месяц)
+- Добавление задач на конкретный день
+- Редактирование задач
+- Удаление задач
+- Хранение задач в базе данных
+- Защита приватных маршрутов
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧭 Пользовательский сценарий
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. При первом заходе пользователь попадает на страницу логина  
+2. Есть возможность перейти на страницу регистрации  
+3. После успешной авторизации пользователь попадает на страницу календаря  
+4. Можно:
+   - переключаться между месяцами (например, декабрь 2025 ↔ январь 2026)
+   - выбрать конкретный день
+   - добавить задачу на выбранную дату
+   - редактировать или удалить существующие задачи
+
+---
+
+## 🛠 Технологический стек
+
+### Frontend
+- React
+- Vite
+- TypeScript
+- Redux
+- React Router
+- SCSS Modules
+
+### Backend
+- Node.js
+- JavaScript
+- JWT (аутентификация)
+- bcrypt (хэширование паролей)
+
+### Database
+- MongoDB
+
+---
