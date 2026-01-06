@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "http://localhost:5000/api",
+    baseURL: "https://dairy-calendar-backend--mvzxw2.replit.app/api",
 })
 
 instance.interceptors.request.use((config) => {
