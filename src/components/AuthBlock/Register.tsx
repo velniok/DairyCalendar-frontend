@@ -12,12 +12,16 @@ export const Register = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
-    const onSubmit = () => {
-        dispatch(fetchAuthRegister({
+    const onSubmit = async () => {
+        const data = await dispatch(fetchAuthRegister({
             username: username,
             email: email,
             password: password,
-        }))
+        })).unwrap()
+
+        if (data.token) {
+            window.localStorage.setItem('token', data.token)
+        }
     }
 
     const onChangeUsername = (event: ChangeEvent<HTMLInputElement>) => {
