@@ -15,22 +15,34 @@
     margin-right: 15px;
 }
 
-.bio {
+.username {
     display: flex;
     align-items: center;
-}
-
-.username {
+    column-gap: 8px;
     font-weight: 600;
     font-size: 20px;
-    margin-right: 8px;
 }
 
 .role {
     display: block;
-    background-color: var(--color-red);
+    background-color: var(--color-blue-light);
     color: var(--color-white);
     font-weight: 600;
+    font-size: 16px;
     padding: 4px 8px;
     border-radius: 8px;
+
+    &.red {
+        background-color: var(--color-red);
+    }
+}
+
+.link {
+    font-weight: 500;
+
+    transition: color 0.3s ease-in;
+
+    &:hover {
+        color: var(--color-red);
+    }
 }

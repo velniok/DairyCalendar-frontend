@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom"
 import { HeaderBlock } from "./components/HeaderBlock"
 import { MenuBlock } from "./components/MenuBlock"
 import './styles/main.scss'
@@ -16,6 +16,9 @@ function App() {
 
     const dispatch = useAppDispatch()
     const AuthRes = useAppSelector((state) => state.auth)
+    
+    const pathname = useLocation().pathname
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(fetchAuthMe())
@@ -42,7 +45,7 @@ function App() {
             AuthRes.status === 'error' || AuthRes.status === 'logout'
             ?
                 <Routes>
-                    <Route path='/' element={<Login />} />
+                    <Route path='*' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                 </Routes>
             :

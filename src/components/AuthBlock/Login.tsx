@@ -51,7 +51,7 @@ export const Login = () => {
                                     <input className={styles.input} type='password' placeholder='Введите пароль' value={password} onChange={onChangePassword} />
                                 </li>
                             </ul>
-                            <button type='button' className={styles.submit} onClick={onSubmit}>Войти</button>
+                            <button className={styles.submit} onClick={onSubmit}>Войти</button>
                         </form>
                         <p className={styles.text}>Нет аккаунта? <Link to={'/register'}>Создать аккаунт</Link></p>
                     </div>

@@ -30,6 +30,50 @@
     color: var(--color-red);
 }
 
+.search {
+    position: relative;
+    width: 695px;
+    display: flex;
+}
+
+.input {
+    font-family: "Inter", sans-serif;
+    width: 100%;
+    border: unset;
+    box-shadow: -1px 4px 10px 0 rgba(0, 0, 0, 0.04), -4px 17px 18px 0 rgba(0, 0, 0, 0.03), -9px 39px 24px 0 rgba(0, 0, 0, 0.02), -17px 69px 28px 0 rgba(0, 0, 0, 0.01), -26px 108px 31px 0 rgba(0, 0, 0, 0);
+    padding: 10px 15px;
+    padding-right: 50px;
+    outline: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.icon {
+    cursor: pointer;
+    position: absolute;
+    background-color: var(--color-red);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    top: 0;
+    border-radius: 8px;
+    border: 1px solid var(--color-red);
+
+    transition: background-color 0.3s, fill 0.3s ease-in;
+
+    &:hover {
+        background-color: var(--color-white);
+
+        & svg path {
+            fill: var(--color-red)
+        }
+    }
+}
+
 .right {
     display: flex;
     align-items: center;
@@ -49,6 +93,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid var(--color-red);
+
+    transition: background-color 0.3s, stroke 0.3s ease-in;
+
+    &:hover {
+        background-color: var(--color-white);
+
+        & svg path {
+            stroke: var(--color-red)
+        }
+
+        & svg ellipse {
+            stroke: var(--color-red)
+        }
+    }
 }
 
 .notifications {
@@ -59,6 +118,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid var(--color-red);
+
+    transition: background-color 0.3s, fill 0.3s ease-in;
+
+    &:hover {
+        background-color: var(--color-white);
+
+        & svg path {
+            fill: var(--color-red)
+        }
+    }
 }
 
 .today {
