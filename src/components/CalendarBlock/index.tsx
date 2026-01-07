@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, type FC } from "react"
 import styles from './Calendar.module.scss'
 import { CalendarDay } from "./CalendarDay"
 import type { IEvent } from "../../types/eventTypes"
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks"
 import { fetchGetEvent } from "../../store/event/eventSlice"
 
-export const CalendarBlock = () => {
+interface CalendarBlockProps {
+    userId: string | undefined
+}
+
+export const CalendarBlock: FC<CalendarBlockProps> = ({ userId }) => {
 
     const dispatch = useAppDispatch()
     const EventRes = useAppSelector((state) => state.event)
-    const UserData = useAppSelector((state) => state.auth.data)
 
     const [monthTitle, setMonthTitle] = useState<string>('Загрузка...')
     const [yearNum, setYearNum] = useState<number>(0)
@@ -22,10 +25,10 @@ export const CalendarBlock = () => {
         today.setHours(0, 0, 0, 0)
         getMonth(today)
 
-        if (UserData) {
-            dispatch(fetchGetEvent({ userId: UserData._id }))
+        if (userId) {
+            dispatch(fetchGetEvent({ userId: userId }))
         }
-    }, [])
+    }, [userId])
 
     const getMonth = (today: Date) => {
         setMonthDays([])
@@ -115,7 +118,7 @@ export const CalendarBlock = () => {
                                         eventsOnDay.push(event)
                                     }
                                 })
-                                return <CalendarDay day={day} key={index} isHidden={isHidden} eventsOnDay={eventsOnDay} />
+                                return <CalendarDay day={day} key={index} isHidden={isHidden} eventsOnDay={eventsOnDay} userId={userId} />
                             }) : <span>Загрузка...</span>
                         }
                     </ul>

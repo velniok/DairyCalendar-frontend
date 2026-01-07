@@ -30,7 +30,12 @@ const initialState: IUserState = {
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {},
+    reducers: {
+        logout: (state) => {
+            state.data = null
+            state.status = 'logout'
+        }
+    },
     extraReducers: (builder) => {
         builder
         .addCase(fetchAuthRegister.pending, (state) => {
@@ -75,3 +80,5 @@ const authSlice = createSlice({
 })
 
 export const authReducer = authSlice.reducer
+
+export const { logout } = authSlice.actions

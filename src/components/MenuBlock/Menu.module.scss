@@ -1,9 +1,135 @@
-.wrapper {
+.menu {
     position: fixed;
-    top: 101px;
+    top: 157px;
     left: 0;
     background-color: var(--color-red);
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 0 8px 8px 0;
     width: 330px;
     height: 100vh;
+    color: var(--color-white)
+}
+
+.inner {
+    position: relative;
+    padding: 55px 21px;
+    height: calc(100vh - 157px);
+}
+
+.user {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.avatar {
+    position: absolute;
+    width: 87px;
+    height: 87px;
+    border-radius: 50%;
+    border: 1px solid var(--color-white);
+    background-color: var(--color-gray);
+    top: calc(-55px + -50%);
+    transform: translateY(-25%);
+
+    transition: opacity 0.3s ease-in;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.username {
+    font-weight: 600;
+}
+
+.email {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.item {
+    position: relative;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 14px;
+
+    transition: background-color 0.3s, color 0.3s, opacity 0.3s ease-in;
+
+    & a {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        padding-left: 56px;
+    }
+
+    &:hover {
+        background-color: var(--color-white);
+        color: var(--color-red);
+        opacity: 0.7;
+    }
+
+    &:hover svg path {
+        fill: var(--color-red)
+    }
+
+    &.active {
+        cursor: default;
+        background-color: var(--color-white);
+        color: var(--color-red);
+
+        & a {
+            cursor: default;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+
+        & svg path {
+            fill: var(--color-red)
+        }
+    }
+}
+
+.icon {
+    position: absolute;
+    left: 16px;
+
+    & path {
+        transition: fill 0.3s ease-in;
+    }
+}
+
+.logout {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 42px);
+    bottom: 30px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 20px;
+    padding-left: 56px;
+    border-radius: 14px;
+
+    transition: background-color 0.3s, color 0.3s, opacity 0.3s ease-in;
+
+    &:hover {
+        background-color: var(--color-white);
+        color: var(--color-red);
+        opacity: 0.7;
+    }
+
+    &:hover svg path {
+        fill: var(--color-red)
+    }
 }

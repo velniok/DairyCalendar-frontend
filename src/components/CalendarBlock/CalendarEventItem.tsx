@@ -2,17 +2,22 @@ import { useState, type FC } from 'react'
 import type { IEvent } from '../../types/eventTypes'
 import styles from './Calendar.module.scss'
 import { CalendarInfoEventModal } from './CalendarInfoEventModal'
+import type { IUser } from '../../types/userTypes'
 
 interface CalendarEventItemProps {
     event: IEvent
+    userId: string | undefined
+    AuthData: IUser | null
 }
 
-export const CalendarEventItem: FC<CalendarEventItemProps> = ({ event }) => {
+export const CalendarEventItem: FC<CalendarEventItemProps> = ({ event, userId, AuthData }) => {
 
     const [openModal, setOpenModal] = useState<boolean>(false)
 
     const openModalHundler = () => {
-        setOpenModal(!openModal)
+        if (AuthData?._id === userId) {
+            setOpenModal(!openModal)
+        }
     }
 
     return (

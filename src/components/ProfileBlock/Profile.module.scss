@@ -1,0 +1,36 @@
+.profile {
+
+}
+
+.top {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-gray);
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.bio {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.role {
+    display: block;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 8px;
+}

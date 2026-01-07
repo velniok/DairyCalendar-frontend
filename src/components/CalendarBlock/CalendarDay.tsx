@@ -3,20 +3,24 @@ import styles from './Calendar.module.scss'
 import type { IEvent } from "../../types/eventTypes"
 import { CalendarEventItem } from "./CalendarEventItem"
 import { CalendarAddEventModal } from "./CalendarAddEventModal"
+import { useAppSelector } from "../../hooks/hooks"
 
 interface CalendarDayProps {
     day: Date
     isHidden: boolean
     eventsOnDay: IEvent[]
+    userId: string | undefined
 }
 
-export const CalendarDay: FC<CalendarDayProps> = ({ day, isHidden, eventsOnDay }) => {
+export const CalendarDay: FC<CalendarDayProps> = ({ day, isHidden, eventsOnDay, userId }) => {
+
+    const AuthData = useAppSelector((state) => state.auth.data)
 
     const [isShowAdd, setIsShowAdd] = useState<boolean>(false)
     const [openModal, setOpenModal] = useState<boolean>(false)
 
     const onMouseEnterHundler = () => {
-        if (!isHidden) {
+        if (!isHidden && AuthData?._id === userId) {
             setIsShowAdd(true)
         }
     }
@@ -26,7 +30,9 @@ export const CalendarDay: FC<CalendarDayProps> = ({ day, isHidden, eventsOnDay }
     }
 
     const openModalHundler = () => {
-        setOpenModal(!openModal)
+        if (AuthData?._id === userId) {
+            setOpenModal(!openModal)
+        }
     }
 
     return (
@@ -41,7 +47,7 @@ export const CalendarDay: FC<CalendarDayProps> = ({ day, isHidden, eventsOnDay }
             <ul className={styles.eventList}>
             {
                 eventsOnDay.map(event => {
-                    return <CalendarEventItem key={event._id} event={event} />
+                    return <CalendarEventItem key={event._id} event={event} userId={userId} AuthData={AuthData} />
                 })
             }
             </ul>
