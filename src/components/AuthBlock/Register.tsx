@@ -22,6 +22,8 @@ export const Register = () => {
         if (data.token) {
             window.localStorage.setItem('token', data.token)
         }
+
+        window.location.reload()
     }
 
     const onChangeUsername = (event: ChangeEvent<HTMLInputElement>) => {

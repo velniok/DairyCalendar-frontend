@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { logout } from '../../store/auth/authSlice'
 import styles from './Menu.module.scss'
@@ -10,10 +10,12 @@ export const MenuBlock = () => {
     const AuthRes = useAppSelector((state) => state.auth)
 
     const pathname = useLocation().pathname
+    const navigate = useNavigate()
 
     const onLogout = () => {
         dispatch(logout())
         window.localStorage.removeItem('token')
+        navigate('/')
     }
 
     return (

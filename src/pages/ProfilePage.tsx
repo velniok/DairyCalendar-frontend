@@ -16,7 +16,7 @@ export const ProfilePage = () => {
         if (id) {
             dispatch(fetchGetUser({ id }))
         }
-    }, [])
+    }, [id])
 
     return (
         <>

@@ -4,6 +4,7 @@ import { CalendarDay } from "./CalendarDay"
 import type { IEvent } from "../../types/eventTypes"
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks"
 import { fetchGetEvent } from "../../store/event/eventSlice"
+import { fetchGetUser } from "../../store/user/userSlice"
 
 interface CalendarBlockProps {
     userId: string | undefined
@@ -13,6 +14,8 @@ export const CalendarBlock: FC<CalendarBlockProps> = ({ userId }) => {
 
     const dispatch = useAppDispatch()
     const EventRes = useAppSelector((state) => state.event)
+    const UserData = useAppSelector((state) => state.user.data)
+    const AuthData = useAppSelector((state) => state.auth.data)
 
     const [monthTitle, setMonthTitle] = useState<string>('Загрузка...')
     const [yearNum, setYearNum] = useState<number>(0)
@@ -27,6 +30,9 @@ export const CalendarBlock: FC<CalendarBlockProps> = ({ userId }) => {
 
         if (userId) {
             dispatch(fetchGetEvent({ userId: userId }))
+            if (userId !== UserData?._id) {
+                dispatch(fetchGetUser({ id: userId }))
+            }
         }
     }, [userId])
 
@@ -89,6 +95,9 @@ export const CalendarBlock: FC<CalendarBlockProps> = ({ userId }) => {
         <section className="calendar">
             <div className="container">
                 <div className={styles.wrapper}>
+                    {
+                        AuthData?._id !== UserData?._id && <h2 className="">Календарь {UserData?.username}'s</h2>
+                    }
                     <div className={styles.top}>
                         <h2 className={styles.year}>{yearNum}г.</h2>
                         <h2 className={styles.month}>{monthTitle}</h2>

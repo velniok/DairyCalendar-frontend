@@ -47,6 +47,10 @@
     border-radius: 8px;
     font-weight: 600;
     font-size: 14px;
+
+    &.open {
+        border-radius: 8px 8px 0 0;
+    }
 }
 
 .icon {
@@ -72,6 +76,64 @@
             fill: var(--color-red)
         }
     }
+}
+
+.usersList {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    bottom: 0px;
+    transform: translateY(100%);
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    background-color: var(--color-white);
+    width: 100%;
+    padding: 6px 12px;
+    border-radius: 0px 0px 8px 8px;
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.usersItem {
+    cursor: pointer;
+    border-radius: 8px;
+
+    transition: color 0.3s, background-color 0.3s ease-in;
+    
+    &:hover {
+        background-color: var(--color-red);
+        color: var(--color-white);
+    }
+}
+
+.usersLink {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 6px 12px;
+}
+
+.usersAvatar {
+    margin-right: 8px;
+    width: 25px;
+    height: 25px;
+    background-color: var(--color-gray);
+    border-radius: 50%;
+}
+
+.usersUsername {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.itsYou {
+    margin-left: 8px;
+    font-size: 14px;
+    opacity: 0.7;
 }
 
 .right {
