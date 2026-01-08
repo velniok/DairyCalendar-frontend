@@ -15,6 +15,7 @@ export const HeaderSearch: FC = () => {
 
     const [searchValue, setSearchValue] = useState<string>('')
     const [openUsers, setOpenUsers] = useState<boolean>(false)
+    const [notFoundUsers, setNotFoundUsers] = useState<boolean>(false)
 
     const userLinkRef = useRef<HTMLAnchorElement>(null)
 
@@ -22,6 +23,7 @@ export const HeaderSearch: FC = () => {
         if (searchValue !== '') {
             dispatch(fetchSearchUsers( {value: searchValue} ))
         }
+        setNotFoundUsers(false)
     }, [searchValue])
 
     useEffect(() => {
@@ -38,7 +40,7 @@ export const HeaderSearch: FC = () => {
     }
 
     const onBlurOpenUsers = (event: FocusEvent<HTMLInputElement>) => {
-        if (userLinkRef.current?.className !== event.relatedTarget?.className) {
+        if (userLinkRef.current?.className !== event.relatedTarget?.className || searchValue === '' || SearchUsersRes.data?.length === 0) {
             setOpenUsers(false)
         }
     }
@@ -62,20 +64,24 @@ export const HeaderSearch: FC = () => {
             <ul className={`${styles.usersList} ${openUsers ? styles.open : ''}`}>
                 {
                     searchValue === '' ?
-                    <span>Начните вводить, чтобы найти пользователя...</span>
+                    <li>Начните вводить, чтобы найти пользователя...</li>
                     :
                     <>
                     {
                         SearchUsersRes.status === 'loaded' ?
                         <>
                         {
-                            SearchUsersRes.data?.length === 0 ?
+                            SearchUsersRes.data?.length === 0 || notFoundUsers ?
                             <span>Ничего не найдено</span>
                             :
                             <>
                             {
                                 SearchUsersRes.data?.map((user) => {
-                                    return <HeaderSearchItem key={user._id} user={user} userLinkRef={userLinkRef} />
+                                    if (user._id !== pathname.slice(9)) {
+                                        return <HeaderSearchItem key={user._id} user={user} userLinkRef={userLinkRef} />
+                                    } else if (SearchUsersRes.data?.length === 1) {
+                                        setNotFoundUsers(true)
+                                    }
                                 })
                             }
                             </>

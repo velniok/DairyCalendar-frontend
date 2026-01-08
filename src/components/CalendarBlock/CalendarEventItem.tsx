@@ -22,7 +22,7 @@ export const CalendarEventItem: FC<CalendarEventItemProps> = ({ event, userId, A
 
     return (
         <>
-            <li className={`${styles.eventItem} ${styles[event.color]}`} onClick={openModalHundler}> 
+            <li className={`${styles.eventItem} ${styles[event.color]} ${userId !== AuthData?._id ? styles.disabled : ''}`} onClick={openModalHundler}> 
                 <span className={styles.eventTime}>{`${new Date(event.start).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}`} - {`${new Date(event.end).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}`}</span>
                 <span className={styles.eventTitle}>{event.title}</span>
             </li>
