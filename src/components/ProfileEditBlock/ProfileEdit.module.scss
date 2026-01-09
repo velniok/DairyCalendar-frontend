@@ -1,0 +1,87 @@
+.title {
+    display: inline-block;
+    position: relative;
+    font-weight: 600;
+    font-size: 24px;
+    padding-bottom: 5px;
+    margin-bottom: 35px;
+
+    &:before {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 75%;
+        background-color: var(--color-orange);
+        bottom: 0;
+    }
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 27px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-gray);
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.username {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.email {
+    font-size: 15px;
+}
+
+.form {
+    border: 1px solid var(--color-gray);
+    padding: 44px 36px;
+    border-radius: 12px;
+}
+.formList {
+    margin-bottom: 32px;
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    max-width: 500px;
+}
+
+.label {
+    font-weight: 600;
+}
+
+.input {
+    font-family: "Inter", sans-serif;
+    outline: none;
+    border: 1px solid var(--color-gray);
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.submit {
+    font-weight: 500;
+    font-size: 16px;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    padding: 9px 24px;
+    border-radius: 6px;
+    border: 1px solid var(--color-red);
+
+    transition: background-color 0.3s, color 0.3s ease-in;
+
+    &:hover {
+        background-color: var(--color-white);
+        color: var(--color-red);
+    }
+}

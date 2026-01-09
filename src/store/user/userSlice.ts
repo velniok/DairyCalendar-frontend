@@ -7,6 +7,11 @@ export const fetchGetUser = createAsyncThunk<IUser, { id: string }>('user/fetchG
     return data
 })
 
+export const fetchEditUser = createAsyncThunk<IUser, { userId: string, req: { username: string } }>('user/fetchEditUser', async (params) => {
+    const { data } = await axios.patch<IUser>(`/user/edit/${params.userId}`, params.req)
+    return data
+})
+
 interface IUserState {
     data: IUser | null
     status: string
@@ -32,6 +37,19 @@ const userSlice = createSlice({
             state.status = 'loaded'
         })
         .addCase(fetchGetUser.rejected, (state) => {
+            state.data = null
+            state.status = 'error'
+        })
+
+        .addCase(fetchEditUser.pending, (state) => {
+            state.data = null
+            state.status = 'loading'
+        })
+        .addCase(fetchEditUser.fulfilled, (state, action: PayloadAction<IUser>) => {
+            state.data = action.payload
+            state.status = 'loaded'
+        })
+        .addCase(fetchEditUser.rejected, (state) => {
             state.data = null
             state.status = 'error'
         })
